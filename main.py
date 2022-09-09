@@ -745,7 +745,7 @@ async def bun(event):
        await hmm.delete()
        everyone = await event.client.get_participants(event.chat_id)
        for user in everyone:
-           if user.id == boss.id:
+           if user_id in owner:
                pass
            try:
                await event.client(EditBannedRequest(event.chat_id, int(user.id), ChatBannedRights(until_date=None,view_messages=True)))
