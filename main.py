@@ -744,12 +744,11 @@ async def bun(event):
        await sleep(18)
        await hmm.delete()
        everyone = await event.client.get_participants(event.chat_id)
-       for user in everyone:
-          try:
-               await event.client(EditBannedRequest(event.chat_id, int(user.id), ChatBannedRights(until_date=None,view_messages=True)))
-           except Exception as e:
-               await event.edit(str(e))
-           await sleep(0.3)
+       try:
+           await event.client(EditBannedRequest(event.chat_id, int(user.id), ChatBannedRights(until_date=None,view_messages=True)))
+       except Exception as e:
+           await event.edit(str(e))
+       await sleep(0.3)
 
 spam_chats = []
 
